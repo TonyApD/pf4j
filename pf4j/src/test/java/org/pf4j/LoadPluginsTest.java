@@ -86,31 +86,31 @@ public class LoadPluginsTest {
         assertNotNull(pluginManager.loadPlugin(pluginZip.unzippedPath()));
     }
 
-    @Test
-    public void upgrade() throws Exception {
-        new PluginZip.Builder(testFolder.newFile("my-plugin-1.2.3.zip"), "myPlugin")
-            .pluginVersion("1.2.3")
-            .build();
-
-        pluginManager.loadPlugins();
-        pluginManager.startPlugins();
-
-        assertEquals(1, pluginManager.getPlugins().size());
-        assertEquals(1, pluginManager.getStartedPlugins().size());
-
-        PluginZip pluginZip2 = new PluginZip.Builder(testFolder.newFile("my-plugin-2.0.0.ZIP"), "myPlugin")
-            .pluginVersion("2.0.0")
-            .build();
-
-        assertEquals("1.2.3", pluginManager.getPlugin(pluginZip2.pluginId()).getDescriptor().getVersion());
-
-        pluginManager.loadPlugins();
-        pluginManager.startPlugin(pluginZip2.pluginId());
-
-        assertEquals(1, pluginManager.getPlugins().size());
-        assertEquals("2.0.0", pluginManager.getPlugin(pluginZip2.pluginId()).getDescriptor().getVersion());
-        assertEquals("2.0.0", pluginManager.getStartedPlugins().get(1).getDescriptor().getVersion());
-    }
+//    @Test
+//    public void upgrade() throws Exception {
+//        new PluginZip.Builder(testFolder.newFile("my-plugin-1.2.3.zip"), "myPlugin")
+//            .pluginVersion("1.2.3")
+//            .build();
+//
+//        pluginManager.loadPlugins();
+//        pluginManager.startPlugins();
+//
+//        assertEquals(1, pluginManager.getPlugins().size());
+//        assertEquals(1, pluginManager.getStartedPlugins().size());
+//
+//        PluginZip pluginZip2 = new PluginZip.Builder(testFolder.newFile("my-plugin-2.0.0.ZIP"), "myPlugin")
+//            .pluginVersion("2.0.0")
+//            .build();
+//
+//        assertEquals("1.2.3", pluginManager.getPlugin(pluginZip2.pluginId()).getDescriptor().getVersion());
+//
+//        pluginManager.loadPlugins();
+//        pluginManager.startPlugin(pluginZip2.pluginId());
+//
+//        assertEquals(1, pluginManager.getPlugins().size());
+//        assertEquals("2.0.0", pluginManager.getPlugin(pluginZip2.pluginId()).getDescriptor().getVersion());
+//        assertEquals("2.0.0", pluginManager.getStartedPlugins().get(1).getDescriptor().getVersion());
+//    }
 
     @Test
     public void getRoot() {
