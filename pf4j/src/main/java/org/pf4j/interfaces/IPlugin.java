@@ -15,5 +15,7 @@ public interface IPlugin extends ExtensionPoint {
 
     String convertVraagToStructuredText(String vraagEigenschappen, String gegevenAntwoord);
 
-    String getNakijkmodelStructure();
+    String getNakijkmodel();
+
+    String getVraagstelling();
 }
