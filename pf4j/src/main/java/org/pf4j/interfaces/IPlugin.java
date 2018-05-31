@@ -1,21 +1,21 @@
 package org.pf4j.interfaces;
 
-import javafx.scene.Scene;
+import javafx.scene.Parent;
 import org.pf4j.ExtensionPoint;
 
 public interface IPlugin extends ExtensionPoint {
 
-    void showVraagAfnemen(Scene parent, String vraagEigenschappen, IPluginStudentCallback callback);
+    Parent showVraagAfnemen(String vraagModel, IPluginStudentCallback callback);
 
-    void showVraagNakijken(Scene parent, String vraagEigenschappen, String nakijkModel, String gegevenAntwoord);
+    Parent showVraagNakijken(String vraagModel, String nakijkModel, String gegevenAntwoord);
 
-    void showVraagOpstellen(Scene parent, String vraagEigenschappen, String nakijkModel, IPluginDocentCallback callback);
+    Parent showVraagOpstellen(String vraagModel, String nakijkModel, IPluginDocentCallback callback);
 
     int verifyAntwoord(String nakijkModel, String gegevenAntwoord);
 
-    String convertVraagToStructuredText(String vraagEigenschappen, String gegevenAntwoord);
+    String convertVraagToStructuredText(String vraagModel, String gegevenAntwoord);
 
     String getNakijkmodel();
 
-    String getVraagstelling();
+    String getVraagModel();
 }
