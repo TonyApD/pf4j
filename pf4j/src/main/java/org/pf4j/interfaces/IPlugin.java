@@ -4,6 +4,7 @@ import javafx.scene.Parent;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.pf4j.ExtensionPoint;
+import org.pf4j.model.Beoordeling;
 
 import java.util.List;
 
@@ -26,15 +27,15 @@ public interface IPlugin extends ExtensionPoint {
      * @param gegevenAntwoord the given answer by the student
      * @return the view which shows the process for checking student answers
      */
-    Parent showVraagNakijken(String vraagModel, String nakijkModel, String gegevenAntwoord);
+    Parent showVraagNakijken(String vraagModel, String nakijkModel, String gegevenAntwoord, IPluginNakijkenCallback callback);
 
     /**
      * @param vraagModel  the model of the question to be shown
      * @param nakijkModel the model of the question prescription
-     * @param callback
-     * @return
+     * @param callback the callback to send the question to the desktop application
+     * @return the view which shows the process for creating a question
      */
-    Parent showVraagOpstellen(String vraagModel, String nakijkModel, IPluginDocentCallback callback);
+    Parent showVraagOpstellen(String vraagModel, String nakijkModel, IPluginOpstellenCallback callback);
 
     /**
      * Checks the students answer against computed solutions
@@ -44,7 +45,7 @@ public interface IPlugin extends ExtensionPoint {
      * @param gegevenAntwoord the answer given by the student
      * @return A JSON output with the mistakes of the student and the number of points earned by the student
      */
-    String verifyAntwoord(String vraagModel, String nakijkModel, String gegevenAntwoord);
+    Beoordeling verifyAntwoord(String vraagModel, String nakijkModel, String gegevenAntwoord);
 
     /**
      * Convert the question and the answer of the student to PDF format

@@ -1,6 +1,6 @@
 package org.pf4j.interfaces;
 
-public interface IPluginDocentCallback {
+public interface IPluginOpstellenCallback {
 
     /**
      * Sends the question that has been composed to the desktop application
