@@ -13,11 +13,13 @@ public interface IPlugin extends ExtensionPoint {
     /**
      * Build the view for displaying the question to be filled in
      *
-     * @param vraagModel the model of the question to be shown
-     * @param callback   the callback implementation to send the answer back to the desktop application
+     * @param vraagModel      the model of the question to be shown
+     * @param gegevenAntwoord the answer given by the student. This value makes sure that when the student switches back
+     *                        to the question his answer will be displayed
+     * @param callback        the callback implementation to send the answer back to the desktop application
      * @return the view which shows the process for filling in the question
      */
-    Parent showVraagAfnemen(String vraagModel, IPluginStudentCallback callback);
+    Parent showVraagAfnemen(String vraagModel, String gegevenAntwoord, IPluginStudentCallback callback);
 
     /**
      * Build the view for displaying the process for checking a students answer
@@ -32,7 +34,7 @@ public interface IPlugin extends ExtensionPoint {
     /**
      * @param vraagModel  the model of the question to be shown
      * @param nakijkModel the model of the question prescription
-     * @param callback the callback to send the question to the desktop application
+     * @param callback    the callback to send the question to the desktop application
      * @return the view which shows the process for creating a question
      */
     Parent showVraagOpstellen(String vraagModel, String nakijkModel, IPluginOpstellenCallback callback);
