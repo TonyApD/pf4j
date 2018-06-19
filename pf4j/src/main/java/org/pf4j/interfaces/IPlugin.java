@@ -29,7 +29,7 @@ public interface IPlugin extends ExtensionPoint {
      * @param gegevenAntwoord the given answer by the student
      * @return the view which shows the process for checking student answers
      */
-    Parent showVraagNakijken(String vraagModel, String nakijkModel, String gegevenAntwoord, IPluginNakijkenCallback callback);
+    Parent showVraagNakijken(String vraagModel, String nakijkModel, String gegevenAntwoord);
 
     /**
      * @param vraagModel  the model of the question to be shown
