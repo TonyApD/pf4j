@@ -45,9 +45,10 @@ public interface IPlugin extends ExtensionPoint {
      * @param vraagModel      the question with its properties
      * @param nakijkModel     the correction prescription
      * @param gegevenAntwoord the answer given by the student
+     * @param maxPoints       the maximum number of points a student can earn for the question
      * @return A JSON output with the mistakes of the student and the number of points earned by the student
      */
-    Beoordeling verifyAntwoord(String vraagModel, String nakijkModel, String gegevenAntwoord);
+    Beoordeling verifyAntwoord(String vraagModel, String nakijkModel, String gegevenAntwoord, Integer maxPoints);
 
     /**
      * Convert the question and the answer of the student to PDF format
@@ -55,22 +56,10 @@ public interface IPlugin extends ExtensionPoint {
      * @param document        the document on which the pages should be added
      * @param vraagModel      the question with its properties
      * @param gegevenAntwoord the given answer by the student
+     * @param comments        the comments made during the correction of the students solution
+     * @param pointsEarned    the number of points the student earned for the question
      * @return A list of pages which should be included in the document
      */
     List<PDPage> convertVraagToStructuredText(PDDocument document, String vraagModel, String gegevenAntwoord,
-                                              String comments, int points);
-
-    /**
-     * Gives the parsed data that's necessary for the correction prescription
-     *
-     * @return the parsed nakijkmodel
-     */
-    String getNakijkmodel();
-
-    /**
-     * Gives the parsed structure for the question
-     *
-     * @return the parsed question
-     */
-    String getVraagModel();
+                                              String comments, Integer pointsEarned);
 }
